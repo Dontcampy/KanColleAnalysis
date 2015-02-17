@@ -1,0 +1,1 @@
+svdata={"api_result":1,"api_result_msg":"\u6210\u529f","api_data":{"api_ship":[{"api_id":1,"api_fuel":15,"api_bull":20,"api_onslot":[0,0,0,0,0]}],"api_material":[771,6254,1833,8072],"api_use_bou":0}}HTTP/1.1 200 OK
