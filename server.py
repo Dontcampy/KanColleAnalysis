@@ -230,11 +230,6 @@ class Connection(object):
                 logger.debug('recvd 0 bytes from %s' % self.what)
                 return None
             logger.debug('rcvd %d bytes from %s' % (len(data), self.what))
-            if(self.what == 'server'):
-                f = open('server.txt', 'a')
-                f.write(data)
-                f.close()
-                print ('rcvd %d bytes from %s' % (len(data), self.what))
             return data
         except Exception as e:
             logger.exception('Exception while receiving from connection %s %r with reason %r' % (self.what, self.conn, e))
