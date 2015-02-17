@@ -25,7 +25,9 @@ import time
 import logging
 import socket
 import global_var
+#import chardet
 import select
+import sys
 
 logger = logging.getLogger(__name__)
 
@@ -422,7 +424,7 @@ class Proxy(multiprocessing.Process):
         if self.request.method == "CONNECT":
             logger.info("%s:%s - %s %s:%s" % (self.client.addr[0], self.client.addr[1], self.request.method, host, port))
         else:
-            self.communicator.send(self.response.raw)
+            self.communicator.send(self.response.raw.encode('ascii'))
             logger.info("%s:%s - %s %s:%s%s - %s %s - %s bytes" % (self.client.addr[0], self.client.addr[1], self.request.method, host, port, self.request.build_url(), self.response.code, self.response.reason, len(self.response.raw)))
     
     def _get_waitable_lists(self):

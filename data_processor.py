@@ -1,6 +1,12 @@
+# -*- coding: utf-8 -*-
 import random
 import socket
 import time
+import sys
+#import chardet
+
+reload(sys)
+sys.setdefaultencoding('utf8')
 
 host = '127.0.0.1'
 port = '-1'
