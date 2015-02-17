@@ -32,11 +32,11 @@ while True:
     buf = buf + lst[0]
     if(len(lst) != 1):
         if('svdata' in buf):
-            f.write(buf + '\n')
+            f.write(((buf+'\n').replace('HTTP/1.1 200 OK', '')).decode('unicode_escape'))
         buf = ''
     for i in range(1, len(lst) - 1):
         if('svdata' in lst[i]):
-            f.write(lst[i] + '\n')
+            f.write(((lst[i] + '\n').replace('HTTP/1.1 200 OK', '')).decode('unicode_escape'))
     if(len(lst) != 1):
         buf = lst[len(lst) - 1]
     f.flush()

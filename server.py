@@ -304,8 +304,6 @@ class Communicator:
                     else:
                         del self.dst
                 except Exception as e:
-                    if i == 1247:
-                        print e
                     if self.dst:
                         del self.dst
             logger.info('scan end')
@@ -420,15 +418,11 @@ class Proxy(multiprocessing.Process):
         self.client.queue(data)
     
     def _access_log(self):
-        print global_var.totDat
         host, port = self.server.addr if self.server else (None, None)
         if self.request.method == "CONNECT":
             logger.info("%s:%s - %s %s:%s" % (self.client.addr[0], self.client.addr[1], self.request.method, host, port))
         else:
             self.communicator.send(self.response.raw)
-            global_var.totDat += len(self.response.raw)
-            print 'totdat' + str(global_var.totDat)
-            print 'raw' + str(len(self.response.raw))
             logger.info("%s:%s - %s %s:%s%s - %s %s - %s bytes" % (self.client.addr[0], self.client.addr[1], self.request.method, host, port, self.request.build_url(), self.response.code, self.response.reason, len(self.response.raw)))
     
     def _get_waitable_lists(self):
